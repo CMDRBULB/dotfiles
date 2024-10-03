@@ -13,3 +13,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("vim-options")
 require("lazy").setup("plugins")
+
+function _G.JournalTemplate()
+  local todo = vim.fn.input('Enter TODO keyword (leave empty for none): ')
+  if todo ~= '' then
+    return todo .. ' [%<%Y-%m-%d %H:%M>] %?'
+  else
+    return '[%<%H:%M>]\n   %?'
+  end
+end
