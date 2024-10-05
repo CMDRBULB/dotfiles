@@ -13,12 +13,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("vim-options")
 require("lazy").setup("plugins")
+vim.opt.timeoutlen = 10000  -- Set to 10 seconds or adjust as needed
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "*.org",
+  command = "!rclone copy ~/local/orgfiles nextcloud:/"
+})
 
-function _G.JournalTemplate()
-  local todo = vim.fn.input('Enter TODO keyword (leave empty for none): ')
-  if todo ~= '' then
-    return todo .. ' [%<%Y-%m-%d %H:%M>] %?'
-  else
-    return '[%<%H:%M>]\n   %?'
-  end
-end
+

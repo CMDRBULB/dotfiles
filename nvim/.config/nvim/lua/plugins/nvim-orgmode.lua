@@ -6,13 +6,13 @@ return{
   config = function()
     -- Setup orgmode
 require('orgmode').setup({
-  org_agenda_files = {'~/orgfiles/**/*', '~/orgfiles/journal.org'},
-  org_default_notes_file = '~/orgfiles/refile.org',
+  org_agenda_files = {'~/local/orgfiles/**/*'},
+  org_default_notes_file = '~/local/orgfiles/refile.org',
   org_capture_templates = {
     j = {
       description = 'Journal Entry',
       template = '** %^{Do you need a todo?|[%<%H:%M>]|TODO %<%m-%d-%Y %A> [%<%H:%M>]} %?',
-      target = '~/orgfiles/journal.org',
+      target = '~/local/orgfiles/journal.org',
       datetree = { tree_type = 'day' },
       properties = { empty_lines = { before = 1, after = 1 } },
     },
