@@ -115,7 +115,12 @@ vim.opt.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+  vim.g.clipboard = {
+    name = 'wl-clipboard',
+    copy = { ['+'] = 'wl-copy', ['*'] = 'wl-copy' },
+    paste = { ['+'] = 'wl-paste', ['*'] = 'wl-paste' },
+    cache_enabled = true,
+  }
 end)
 
 -- Enable break indent
@@ -203,13 +208,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
-
-vim.api.nvim_create_autocmd('filetype', {
-  desc = 'Lets you create additonal checkboxes from insert mode',
+vim.api.nvim_create_autocmd('FileType', {
   pattern = 'org',
   callback = function()
+    print 'Autocmd triggered for org file'
     vim.keymap.set('i', '<S-CR>', '<cmd>lua require("orgmode").action("org_mappings.meta_return")<CR>', {
-      silent = true,
       buffer = true,
     })
   end,
@@ -873,7 +876,7 @@ require('lazy').setup({
         org_capture_templates = {
           j = {
             description = 'Journal Entry',
-            template = '** %^{Do you need a todo?|[%<%H:%M>|TODO %<%m-%d-%Y %A> [%<%H:%M>]} %?',
+            template = '** %^{Do you need a todo?|[%<%H:%M>]|TODO %<%m-%d-%Y %A> [%<%H:%M>]} %?',
             target = '~/local/orgfiles/journal.org',
             datetree = { tree_type = 'day' },
             properties = { empty_lines = { before = 1, after = 1 } },
