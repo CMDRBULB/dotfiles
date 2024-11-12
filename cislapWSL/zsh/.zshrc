@@ -124,11 +124,8 @@ source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-<<<<<<< HEAD:cislapWSL/zsh/.zshrc
 #alias syncorg='~/startupScripts/sync_orgfiles.sh'
 #~/startupScripts/sync_orgfiles.sh
-=======
->>>>>>> f814687a3e79245f1a444da74707cdc0782d4230:zsh/.zshrc
 pokemon-colorscripts --no-title -n gastly
 alias tf='/mnt/c/Program\ Files/Microsoft\ Visual\ Studio/2022/Professional/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team\ Explorer/TF.exe'
 alias gotosenate=' cd /mnt/c/Senate\ Collection/'
