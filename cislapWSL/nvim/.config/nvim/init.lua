@@ -866,6 +866,11 @@ require("lazy").setup({
 						datetree = { tree_type = "day" },
 						properties = { empty_lines = { before = 1, after = 1 } },
 					},
+					e = {
+						description = "Schedule Event",
+						template = "* %?\n SCHEDULED: ",
+						target = "~/local/orgfiles/events.org",
+					},
 				},
 			})
 		end,
